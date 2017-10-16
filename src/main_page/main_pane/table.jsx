@@ -16,10 +16,23 @@ export default class Table extends Component {
         };
     }
 
+    handleCardMove(card, coords) {
+        // console.log(coords);
+
+        var stateCopy = Object.assign({}, this.state);
+        stateCopy.cards = stateCopy.cards.slice();
+        stateCopy.cards.forEach((_, i) => {
+            stateCopy.cards[i] = Object.assign({}, stateCopy.cards[i]);
+            stateCopy.cards[i].x = coords.x + stateCopy.cards[i].id * 150;
+            stateCopy.cards[i].y = coords.y;
+        });
+        this.setState(stateCopy);
+    }
+
 
     render() {
         const cards = this.state.cards.map(p => {
-            return <Card key={p.id} card={p} />;
+            return <Card key={p.id} card={p} onMove={this.handleCardMove.bind(this, p)} />;
         });
 
         return (
