@@ -7,7 +7,9 @@ export default class Layout extends Component {
     return (
       <SplitterLayout vertical={true} primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={200}>
         <SplitterLayout primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={200}>
-          <Table>Main pane</Table>
+          <div style={{backgroundColor: 'Aqua'}}>
+            <Table>Main pane</Table>
+          </div>
           <div>Right pane</div>
         </SplitterLayout>
         <div>Bottom pane</div>

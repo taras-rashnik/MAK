@@ -1,19 +1,24 @@
 import React, { Component } from "react";
-import { Layer, Rect, Stage, Group } from 'react-konva';
-import Card from './card';
+import { Layer, Stage, Image } from 'react-konva';
+import CardComponent from './card_component';
+import deckService, { Deck, Card } from '../../decks/decks-service';
 
 export default class Table extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            cards: [
-                { id: 0, x: 100, y: 100, w: 50, h: 75 },
-                { id: 1, x: 200, y: 100, w: 50, h: 75 },
-                { id: 2, x: 300, y: 100, w: 50, h: 75 },
-            ]
-        };
+        let deck = deckService.allDecks[0];
+        let cards = deck.cards
+            .slice(0, 3)
+            .map(c => {
+                return {
+                    card: c,
+                    rect: { x: 100, y: 100, width: 150, height: 275 }
+                };
+            });
+
+        this.state = { cards };
     }
 
     handleCardMove(card, coords) {
@@ -21,22 +26,20 @@ export default class Table extends Component {
 
         var stateCopy = Object.assign({}, this.state);
         stateCopy.cards = stateCopy.cards.slice();
-        stateCopy.cards.forEach((_, i) => {
-            stateCopy.cards[i] = Object.assign({}, stateCopy.cards[i]);
-            stateCopy.cards[i].x = coords.x + stateCopy.cards[i].id * 150;
-            stateCopy.cards[i].y = coords.y;
-        });
+        // stateCopy.cards[i] = Object.assign({}, stateCopy.cards[i]);
+        card.rect.x = coords.x;
+        card.rect.y = coords.y;
         this.setState(stateCopy);
     }
 
 
     render() {
-        const cards = this.state.cards.map(p => {
-            return <Card key={p.id} card={p} onMove={this.handleCardMove.bind(this, p)} />;
+        const cards = this.state.cards.map(c => {
+            return <CardComponent key={c.card.id} card={c.card} rect={c.rect} onMove={this.handleCardMove.bind(this, c)} />;
         });
 
         return (
-            <Stage width={800} height={600}>
+            <Stage width={1200} height={800}>
                 <Layer>
                     {cards}
                 </Layer>
