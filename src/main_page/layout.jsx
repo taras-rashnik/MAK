@@ -5,8 +5,8 @@ import Table from './main_pane/table'
 export default class Layout extends Component {
   render(){
     return (
-      <SplitterLayout vertical={true} primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={200}>
-        <SplitterLayout primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={200}>
+      <SplitterLayout vertical={true} primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={50}>
+        <SplitterLayout primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={50}>
           <div style={{backgroundColor: 'Aqua'}}>
             <Table>Main pane</Table>
           </div>

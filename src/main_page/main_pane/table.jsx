@@ -14,7 +14,7 @@ export default class Table extends Component {
             .map((c, i) => {
                 return {
                     card: c,
-                    rect: { x: 100+300*i, y: 100, width: 150, height: 275 }
+                    rect: { x: 100+200*i, y: 100, width: 100, height: 150 }
                 };
             });
 
@@ -38,7 +38,7 @@ export default class Table extends Component {
         });
 
         return (
-            <Stage width={1200} height={800}>
+            <Stage width={1920} height={1080}>
                 <Layer>
                     {cards}
                 </Layer>
