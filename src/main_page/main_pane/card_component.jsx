@@ -34,6 +34,14 @@ export default class CardComponent extends Component {
     });
   }
 
+  handleTouchstart = (e) => {
+    this.refs.group.to({
+      scaleX: 0.9,
+      scaleY: 0.9,
+      duration: 0.1
+    });
+  }
+
   handleDragstart = (e) => {
     // console.log(e);
   }
@@ -65,7 +73,7 @@ export default class CardComponent extends Component {
         draggable={true}
 
         onMousedown={this.handleMousedown}
-        onTouchstart={this.handleMousedown}
+        onTouchstart={this.handleTouchstart}
 
         onMouseup={this.handleMouseup}
         onTouchend={this.handleMouseup}
