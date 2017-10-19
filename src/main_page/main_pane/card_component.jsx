@@ -63,8 +63,13 @@ export default class CardComponent extends Component {
         width={this.props.rect.width}
         height={this.props.rect.height}
         draggable={true}
+
         onMousedown={this.handleMousedown}
+        onTouchstart={this.handleMousedown}
+
         onMouseup={this.handleMouseup}
+        onTouchend={this.handleMouseup}
+
         onDragstart={this.handleDragstart}
         onDragmove={this.handleDragmove}
         onDragend={this.handleDragend}

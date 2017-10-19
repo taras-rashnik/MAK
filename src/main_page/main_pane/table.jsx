@@ -11,24 +11,23 @@ export default class Table extends Component {
         let deck = deckService.allDecks[0];
         let cards = deck.cards
             .slice(0, 3)
-            .map(c => {
+            .map((c, i) => {
                 return {
                     card: c,
-                    rect: { x: 100, y: 100, width: 150, height: 275 }
+                    rect: { x: 100+300*i, y: 100, width: 150, height: 275 }
                 };
             });
 
         this.state = { cards };
     }
 
-    handleCardMove(card, coords) {
+    handleCardMove(c, coords) {
         // console.log(coords);
 
         var stateCopy = Object.assign({}, this.state);
         stateCopy.cards = stateCopy.cards.slice();
         // stateCopy.cards[i] = Object.assign({}, stateCopy.cards[i]);
-        card.rect.x = coords.x;
-        card.rect.y = coords.y;
+        c.rect = { ...c.rect, x: coords.x, y: coords.y };
         this.setState(stateCopy);
     }
 
