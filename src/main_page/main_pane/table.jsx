@@ -38,7 +38,7 @@ export default class Table extends Component {
         });
 
         return (
-            <Stage width={1920} height={1080}>
+            <Stage width={960} height={540}>
                 <Layer>
                     {cards}
                 </Layer>

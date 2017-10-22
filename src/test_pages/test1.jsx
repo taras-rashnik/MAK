@@ -4,7 +4,7 @@ import { Layer, Stage, Image, Rect } from 'react-konva';
 export default class Test1 extends Component {
     render() {
         return (
-            <Stage width={1920} height={1080}>
+            <Stage width={960} height={540}>
                 <Layer>
                     <Rect
                         x={100} y={100}
