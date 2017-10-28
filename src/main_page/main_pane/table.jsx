@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Layer, Stage, Image } from 'react-konva';
 import CardComponent from './card_component';
 import deckService, { Deck, Card } from '../../decks/decks-service';
+import './table.css';
 
 export default class Table extends Component {
 
@@ -14,11 +15,17 @@ export default class Table extends Component {
             .map((c, i) => {
                 return {
                     card: c,
-                    rect: { x: 100+200*i, y: 100, width: 100, height: 150 }
+                    rect: { x: 100 + 200 * i, y: 100, width: 100, height: 150 }
                 };
             });
 
-        this.state = { cards };
+        this.state = {
+            cards,
+            canvasWidth: window.innerWidth,
+            canvasHeight: window.innerHeight,
+        };
+
+        this.handleShowDecks = this.handleShowDecks.bind(this);
     }
 
     handleCardMove(c, coords) {
@@ -31,18 +38,36 @@ export default class Table extends Component {
         this.setState(stateCopy);
     }
 
+    handleShowDecks() {
+        this.props.onShowDecks(true);
+    }
 
     render() {
         const cards = this.state.cards.map(c => {
-            return <CardComponent key={c.card.id} card={c.card} rect={c.rect} onMove={this.handleCardMove.bind(this, c)} />;
+            return (
+                <CardComponent
+                    key={c.card.id}
+                    card={c.card}
+                    rect={c.rect}
+                    onMove={this.handleCardMove.bind(this, c)} />
+            );
         });
 
         return (
-            <Stage width={960} height={540}>
-                <Layer>
-                    {cards}
-                </Layer>
-            </Stage>
+            <div className="container">
+                <div className="canvas">
+                    <Stage 
+                            width={this.state.canvasWidth}
+                            height={this.state.canvasHeight}>
+                        <Layer>
+                            {cards}
+                        </Layer>
+                    </Stage>
+                </div>
+                <div className="controls">
+                    <button onClick={this.handleShowDecks}>Show decks</button>
+                </div>
+            </div>
         );
     }
 }

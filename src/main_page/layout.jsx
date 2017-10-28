@@ -1,21 +1,53 @@
 import React, { Component } from "react";
 import SplitterLayout from 'react-splitter-layout';
-import Table from './main_pane/table'
+import Sidebar from 'react-sidebar';
+import Table from './main_pane/table';
 
 export default class Layout extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidebarOpen: false
+    }
+
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    this.handleShowDecks = this.onSetSidebarOpen.bind(this);
+  }
+
+  onSetSidebarOpen(opened) {
+    this.setState({sidebarOpen: opened});
+  }
+
+  handleShowDecks(show){
+    this.setState({sidebarOpen: show});
+  }
+
   render() {
+    var sidebarContent = <div style={{ backgroundColor: 'Aqua' }}>Right pane</div>;
+
     return (
-      <SplitterLayout vertical={true} primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={50}>
-        <SplitterLayout primaryIndex={0} primaryMinSize={400} secondaryMinSize={50} secondaryInitialSize={50}>
+      <Sidebar 
+          sidebar={sidebarContent}
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          touch={true}
+          pullRight={true}>
+        <SplitterLayout
+            vertical={true} primaryIndex={0}
+            primaryMinSize={400} 
+            secondaryMinSize={50}
+            secondaryInitialSize={50}>
           <div>
             <span style={{ backgroundColor: 'Aqua' }}>
-              <Table>Main pane</Table>
+              <Table onShowDecks={this.handleShowDecks}>Main pane</Table>
             </span>
           </div>
-          <div>Right pane</div>
+          <div>Bottom pane</div>
         </SplitterLayout>
-        <div>Bottom pane</div>
-      </SplitterLayout>
+
+      </Sidebar>
     );
   }
 }
