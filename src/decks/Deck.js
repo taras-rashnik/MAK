@@ -9,8 +9,11 @@ export default class Deck {
         this._image.src = this._settings.imageUrl;
 
         let sides = [];
-        for (let row = 0; row < this._settings.cardsInRow; row++) {
-            for (var col = 0; col < this._settings.cardsInColumn; col++) {
+        let rowsNumber = this._settings.cardsInColumn; // 14
+        let columnsNumber = this._settings.cardsInRow; // 6
+
+        for (let row = 0; row < rowsNumber; row++) {
+            for (var col = 0; col < columnsNumber; col++) {
 
                 let crop = {
                     x: col * (this._settings.cardsWidth + this._settings.horizontalGap),
@@ -19,13 +22,16 @@ export default class Deck {
                     height: this._settings.cardsHeight
                 };
 
+                let horizontalPercentage = col * 100 / (columnsNumber - 1);
+                let verticalPercentage = row * 100 / (rowsNumber - 1);
+            
                 let styles = {
                     backgroundRepeat: 'no-repeat',
-                    width: '100px',
-                    height: '150px',
+                    width: '100%',
+                    height: '100%',
                     backgroundImage: `url(${this._settings.imageUrl})`,
-                    backgroundPosition: `${0}% ${0}%`,
-                    backgroundSize: `${this._settings.cardsInRow * 100}% ${this._settings.cardsInColumn * 100}%`,
+                    backgroundPosition: `${horizontalPercentage}% ${verticalPercentage}%`,
+                    backgroundSize: `${columnsNumber * 100}% ${rowsNumber * 100}%`,
                 };
 
                 sides.push(new CardSide(this._image, this._settings.imageUrl, crop, styles));
@@ -34,6 +40,7 @@ export default class Deck {
 
         this._deckCard = new Card(
             `${this._settings.id}-${this._settings.deckPictureIndex}`,
+            // sides[this._settings.deckPictureIndex],
             sides[this._settings.deckPictureIndex],
             sides[this._settings.backSideIndex]
         );

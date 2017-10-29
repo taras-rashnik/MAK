@@ -25,9 +25,9 @@ class DeckService {
         "verticalGap": 10,
         "cardsInRow": 14,
         "cardsInColumn": 6,
-        "cardsNumber": 56,
-        "backSideIndex": 57,
-        "deckPictureIndex": 58
+        "cardsNumber": 70,
+        "backSideIndex": 71,
+        "deckPictureIndex": 69
       }),
       new Deck({
         "id": 1,

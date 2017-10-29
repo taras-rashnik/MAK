@@ -7,8 +7,10 @@ export default class DecksList extends Component {
         let decks = deckService.allDecks.map(d => {
 
             return (
-                <li key={d.id} alt={d.name}> 
-                    <div style={d.deckCard.face.styles}>test</div>
+                <li key={d.id} alt={d.name}>
+                    <div style={{width:100, height:200, padding:10, margin:10}}>
+                        <div style={d.deckCard.face.styles}>test</div>
+                    </div>
                 </li>
             );
         });
