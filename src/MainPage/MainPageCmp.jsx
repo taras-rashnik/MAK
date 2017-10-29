@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import deckService from '../decks/decks-service';
 import LayoutCmp from './LayoutCmp';
 import ControlsCmp from './ControlsCmp';
 import TableCmp from './TableCmp';
@@ -13,7 +14,7 @@ export default class MainPageCmp extends Component {
         super(props);
 
         this.state = {
-            decks: [],
+            decks: deckService.allDecks,
             selectedDeck: null,
             isFaceDown: false,
             tableCards: [],
@@ -21,22 +22,31 @@ export default class MainPageCmp extends Component {
         };
 
         this.handleShowDecks = this.handleShowDecks.bind(this);
+        this.handleDeckSelected = this.handleDeckSelected.bind(this);
     }
 
     handleShowDecks(show) {
         this.setState({ isDecksVisible: show });
     }
 
+    handleDeckSelected(selectedDeck) {
+        this.setState({ selectedDeck: selectedDeck });
+    }
+
     render() {
         let tableCmp = (<TableCmp />);
 
         let controlsCmp = (
-            <ControlsCmp onShowDecks={this.handleShowDecks}/>
+            <ControlsCmp onShowDecks={this.handleShowDecks} />
         );
 
-        let deckListCmp = (<DeckListCmp />);
+        let deckListCmp = (
+            <DeckListCmp decks={this.state.decks} onDeckSelected={this.handleDeckSelected} />
+        );
 
-        let cardListCmp = (<CardListCmp />);
+        let cardListCmp = (
+            <CardListCmp deck={this.state.selectedDeck} />
+        );
 
         return (
             <LayoutCmp

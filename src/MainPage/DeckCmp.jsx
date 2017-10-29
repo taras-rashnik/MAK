@@ -1,15 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export default class DeckCmp extends Component{
+import SpriteCmp from './SpriteCmp';
 
-    constructor(props){
+
+export default class DeckCmp extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
+        let deck = this.props.deck;
+
         return (
-            <h1>DeckCmp</h1>
+            <div
+                style={{ width: 100, height: 150, padding: 10, margin: 10 }}
+                onClick={this.props.onSelected}
+            >
+                <SpriteCmp styles={deck.deckCard.face.styles} />
+            </div>
         );
     }
-    
+
 }

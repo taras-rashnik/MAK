@@ -1,15 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export default class CardCmp extends Component{
+import SpriteCmp from './SpriteCmp';
 
-    constructor(props){
+
+export default class CardCmp extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
+        let card = this.props.card;
+        let styles = card.face.styles;
+
         return (
-            <h1>Card component</h1>
+            <div
+                style={{ width: 100, height: 150, padding: 10, margin: 10 }}
+            >
+                <SpriteCmp styles={styles} />
+            </div>
         );
     }
-    
+
 }

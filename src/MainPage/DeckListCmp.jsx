@@ -1,15 +1,32 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export default class DeckListCmp extends Component{
+import DeckCmp from './DeckCmp';
 
-    constructor(props){
+export default class DeckListCmp extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
+        let liStyles = {
+            listStyleType: 'none',
+            margin: '5px',
+        };
+
+        let decks = this.props.decks.map(d => {
+            return (
+                <li key={d.id} style={liStyles}>
+                    <DeckCmp deck={d} onSelected={() => this.props.onDeckSelected(d)}/>
+                </li>
+            );
+        });
+
         return (
-            <h1>DeckListCmp</h1>
+            <ul>
+                {decks}
+            </ul>
         );
     }
-    
+
 }

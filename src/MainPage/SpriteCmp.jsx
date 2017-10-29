@@ -8,7 +8,7 @@ export default class SpriteCmp extends Component{
 
     render(){
         return (
-            <h1>SpriteCmp</h1>
+            <div style={this.props.styles}></div>
         );
     }
     

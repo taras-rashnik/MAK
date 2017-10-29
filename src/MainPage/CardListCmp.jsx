@@ -1,15 +1,42 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export default class CardListCmp extends Component{
+import CardCmp from './CardCmp';
 
-    constructor(props){
+
+export default class CardListCmp extends Component {
+
+    constructor(props) {
         super(props);
     }
 
-    render(){
+    render() {
+        let ulStyles = {
+            whiteSpace: 'nowrap',
+            width: '100%',
+            overflowX: 'auto',
+        };
+
+        let liStyles = {
+            listStyleType: 'none',
+            display: 'inline-block',
+            margin: '5px',
+        };
+
+        let deck = this.props.deck;
+        let cards = [];
+        if (deck) {
+            cards = deck.cards.map(c => {
+                return (
+                    <li key={c.id} style={liStyles}>
+                        <CardCmp card={c} />
+                    </li>
+                );
+            });
+        }
+
         return (
-            <h1>Card list component</h1>
+            <ul style={ulStyles}>{cards}</ul>
         );
     }
-    
+
 }

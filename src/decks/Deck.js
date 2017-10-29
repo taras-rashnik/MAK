@@ -4,22 +4,23 @@ import Card, { CardSide } from './Card';
 export default class Deck {
 
     constructor(settings) {
-        this._settings = settings;
+        this._id = settings.id;
+        this._name = settings.name;
         this._image = new Image();
-        this._image.src = this._settings.imageUrl;
+        this._image.src = settings.imageUrl;
 
         let sides = [];
-        let rowsNumber = this._settings.cardsInColumn; // 14
-        let columnsNumber = this._settings.cardsInRow; // 6
+        let rowsNumber = settings.cardsInColumn; // 14
+        let columnsNumber = settings.cardsInRow; // 6
 
         for (let row = 0; row < rowsNumber; row++) {
             for (var col = 0; col < columnsNumber; col++) {
 
                 let crop = {
-                    x: col * (this._settings.cardsWidth + this._settings.horizontalGap),
-                    y: row * (this._settings.cardsHeight + this._settings.verticalGap),
-                    width: this._settings.cardsWidth,
-                    height: this._settings.cardsHeight
+                    x: col * (settings.cardsWidth + settings.horizontalGap),
+                    y: row * (settings.cardsHeight + settings.verticalGap),
+                    width: settings.cardsWidth,
+                    height: settings.cardsHeight
                 };
 
                 let horizontalPercentage = col * 100 / (columnsNumber - 1);
@@ -29,37 +30,36 @@ export default class Deck {
                     backgroundRepeat: 'no-repeat',
                     width: '100%',
                     height: '100%',
-                    backgroundImage: `url(${this._settings.imageUrl})`,
+                    backgroundImage: `url(${settings.imageUrl})`,
                     backgroundPosition: `${horizontalPercentage}% ${verticalPercentage}%`,
                     backgroundSize: `${columnsNumber * 100}% ${rowsNumber * 100}%`,
                 };
 
-                sides.push(new CardSide(this._image, this._settings.imageUrl, crop, styles));
+                sides.push(new CardSide(this._image, settings.imageUrl, crop, styles));
             }
         }
 
         this._deckCard = new Card(
-            `${this._settings.id}-${this._settings.deckPictureIndex}`,
-            // sides[this._settings.deckPictureIndex],
-            sides[this._settings.deckPictureIndex],
-            sides[this._settings.backSideIndex]
+            `${settings.id}-${settings.deckPictureIndex}`,
+            sides[settings.deckPictureIndex],
+            sides[settings.backSideIndex]
         );
 
         this._cards = sides
-            .slice(0, this._settings.cardsNumber)
+            .slice(0, settings.cardsNumber)
             .map((s, i) => new Card(
-                `${this._settings.id}-${i}`,
+                `${settings.id}-${i}`,
                 sides[i],
-                sides[this._settings.backSideIndex]
+                sides[settings.backSideIndex]
             ));
     }
 
     get id() {
-        return this._settings.id;
+        return this._id;
     }
 
     get name() {
-        return this._settings.name;
+        return this._name;
     }
 
     get cards() {
