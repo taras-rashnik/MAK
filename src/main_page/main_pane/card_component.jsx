@@ -87,14 +87,14 @@ export default class CardComponent extends Component {
           y={0}
           width={this.props.rect.width}
           height={this.props.rect.height}
-          image={this.props.card.image}
-          crop={this.props.card.crop}
+          image={this.props.card.face.image}
+          crop={this.props.card.face.crop}
         />
         <Text
           x={0}
           y={25}
-          width={this.props.card.width}
-          text={this.props.card.id.toString()}
+          width={this.props.rect.width}
+          text={this.props.card.id}
           fontSize='30'
           fontFamily='Calibri'
           fill='green'

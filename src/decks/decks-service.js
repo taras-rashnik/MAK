@@ -4,71 +4,8 @@ import tarotDeck02 from "./tarot_2.jpg";
 import tarotDeck03 from "./tarot_3.png";
 import tarotDeck04 from "./playing-cards.gif";
 
-export class Card {
+import Deck from './Deck';
 
-  constructor(id, deck, crop) {
-    this._id = id;
-    this._deck = deck;
-    this._crop = crop;
-  }
-
-  get id() {
-    return this._id;
-  }
-
-  get crop() {
-    return this._crop;
-  }
-
-  get image() {
-    return this._deck.image;
-  }
-}
-
-export class Deck {
-  constructor(settings) {
-    this._settings = settings;
-    this._image = new Image();
-    this._image.src = this._settings.imageUrl;
-
-    let deltaX = settings.horizontalGap;
-    let deltaY = settings.verticalGap;
-
-    this._cards = [
-      new Card(1, this, { x: 15, y: 15, width: 234, height: 425 }),
-      new Card(2, this, { x: 234+2*deltaX, y: 425+2*deltaY, width: 234, height: 425 }),
-      new Card(3, this, { x: 2*234+3*deltaX, y: 2*425+3*deltaY, width: 234, height: 425 }),
-    ];
-  }
-
-  get id() {
-    return this._settings._id;
-  }
-
-  get name() {
-    return this._settings.name;
-  }
-
-  get image() {
-    return this._image;
-  }
-
-  get imageUrl() {
-    return this._settings.imageUrl;
-  }
-
-  get cards() {
-    return this._cards;
-  }
-
-  get cardsInRow() {
-    return this._settings.cardsInRow;
-  }
-
-  get cardsInColumn() {
-    return this._settings.cardsInColumn;
-  }
-}
 
 class DeckService {
 
@@ -132,7 +69,7 @@ class DeckService {
         "cardsInColumn": 7,
         "cardsNumber": 70,
         "backSideIndex": 68,
-        "deckPictureIndex": 34    
+        "deckPictureIndex": 34
       }),
       new Deck({
         "id": 4,

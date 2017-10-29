@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Layer, Stage, Image } from 'react-konva';
 import CardComponent from './card_component';
-import deckService, { Deck, Card } from '../../decks/decks-service';
+import deckService from '../../decks/decks-service';
+import Card from '../../decks/Card';
+import Deck from '../../decks/Deck';
 import './table.css';
 
 export default class Table extends Component {
