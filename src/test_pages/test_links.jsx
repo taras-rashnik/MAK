@@ -7,6 +7,7 @@ export default class TestLinks extends Component {
             <div>
                 <h1>Test Links</h1>
                 <ul>
+                <li><Link to="/main">Main page</Link></li>
                 <li><Link to="/layout">Layout</Link></li>
                 <li><Link to="/test1">Test 1</Link></li>
                 </ul>
