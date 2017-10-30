@@ -41,16 +41,18 @@ export default class CardListCmp extends Component {
         let cards = [];
         if (deck) {
             cards = deck.cards.map(c => {
+                let side = this.props.isFaceDown ? c.back : c.face;
+
                 return (
                     <li key={c.id} style={liStyles}>
-                        <CardCmp card={c} />
+                        <CardCmp side={side} />
                     </li>
                 );
             });
         }
 
         return (
-            <div style={divStyles}>
+            <div style={divStyles} onDoubleClick={this.props.onToggleFaceBack}>
                 <ul style={ulStyles}>{cards}</ul>
             </div>
         );

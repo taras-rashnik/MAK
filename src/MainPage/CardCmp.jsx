@@ -10,12 +10,11 @@ export default class CardCmp extends Component {
     }
 
     render() {
-        let card = this.props.card;
-        let styles = card.face.styles;
+        let side = this.props.side;
 
         return (
             <div style={{ width: 80, height: 120, padding: 0, margin: 0 }}>
-                <SpriteCmp styles={styles} />
+                <SpriteCmp styles={side.styles} />
             </div>
         );
     }
