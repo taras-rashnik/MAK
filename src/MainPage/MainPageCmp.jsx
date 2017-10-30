@@ -6,6 +6,7 @@ import ControlsCmp from './ControlsCmp';
 import TableCmp from './TableCmp';
 import DeckListCmp from './DeckListCmp';
 import CardListCmp from './CardListCmp';
+import TableCard from './TableCard';
 
 
 export default class MainPageCmp extends Component {
@@ -13,11 +14,16 @@ export default class MainPageCmp extends Component {
     constructor(props) {
         super(props);
 
+        let selectedDeck = deckService.allDecks[0];
+
+        let rect = {x: 0, y: 0, width: 100, height: 150};
+        let tableCards = [new TableCard(selectedDeck.cards[0], rect)];
+
         this.state = {
             decks: deckService.allDecks,
-            selectedDeck: deckService.allDecks[0],
+            selectedDeck: selectedDeck,
             isFaceDown: false,
-            tableCards: [],
+            tableCards: tableCards,
             isDecksVisible: true,
         };
 
@@ -34,13 +40,13 @@ export default class MainPageCmp extends Component {
         this.setState({ selectedDeck: selectedDeck });
     }
 
-    handleToggleFaceBack(){
+    handleToggleFaceBack() {
         let isFaceDown = !this.state.isFaceDown;
         this.setState({ isFaceDown: isFaceDown });
     }
 
     render() {
-        let tableCmp = (<TableCmp />);
+        let tableCmp = (<TableCmp tableCards={this.state.tableCards} />);
 
         let controlsCmp = (
             <ControlsCmp onShowDecks={this.handleShowDecks} />
@@ -51,10 +57,10 @@ export default class MainPageCmp extends Component {
         );
 
         let cardListCmp = (
-            <CardListCmp 
-                deck={this.state.selectedDeck} 
+            <CardListCmp
+                deck={this.state.selectedDeck}
                 isFaceDown={this.state.isFaceDown}
-                onToggleFaceBack={this.handleToggleFaceBack}/>
+                onToggleFaceBack={this.handleToggleFaceBack} />
         );
 
         return (

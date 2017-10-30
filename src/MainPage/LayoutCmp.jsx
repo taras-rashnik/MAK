@@ -23,8 +23,8 @@ export default class LayoutCmp extends Component {
                     primaryMinSize={400}
                     secondaryMinSize={150}
                     secondaryInitialSize={150}>
-                    <div>
-                        <div>{this.props.table}</div>
+                    <div  style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden'}}>
+                        <div style={{height: '100%', width: '100%', overflow: 'hidden'}}>{this.props.table}</div>
                         <div>{this.props.controls}</div>
                     </div>
                     {this.props.cardList}
