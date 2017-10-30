@@ -14,7 +14,7 @@ export default class DeckCmp extends Component {
 
         return (
             <div
-                style={{ width: 100, height: 150, padding: 10, margin: 10 }}
+                style={{ width: 80, height: 120, padding: 0, margin: 0 }}
                 onClick={this.props.onSelected}
             >
                 <SpriteCmp styles={deck.deckCard.face.styles} />

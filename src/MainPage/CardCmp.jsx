@@ -14,9 +14,7 @@ export default class CardCmp extends Component {
         let styles = card.face.styles;
 
         return (
-            <div
-                style={{ width: 100, height: 150, padding: 10, margin: 10 }}
-            >
+            <div style={{ width: 80, height: 120, padding: 0, margin: 0 }}>
                 <SpriteCmp styles={styles} />
             </div>
         );

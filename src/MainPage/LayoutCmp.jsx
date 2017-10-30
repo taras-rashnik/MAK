@@ -18,15 +18,16 @@ export default class LayoutCmp extends Component {
                 touch={true}
                 pullRight={true}>
                 <SplitterLayout
-                    vertical={true} primaryIndex={0}
+                    vertical={true} 
+                    primaryIndex={0}
                     primaryMinSize={400}
-                    secondaryMinSize={50}
+                    secondaryMinSize={150}
                     secondaryInitialSize={150}>
                     <div>
                         <div>{this.props.table}</div>
                         <div>{this.props.controls}</div>
                     </div>
-                    <div>{this.props.cardList}</div>
+                    {this.props.cardList}
                 </SplitterLayout>
             </Sidebar>
         );

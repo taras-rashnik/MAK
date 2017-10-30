@@ -10,16 +10,31 @@ export default class CardListCmp extends Component {
     }
 
     render() {
+        let divStyles = {
+            width: '100%', 
+            height: '100%', 
+            margin: 0, 
+            padding: 0, 
+            backgroundColor: 'lightgrey', 
+            overflowX: 'hidden', 
+            overflowY: 'hidden'
+        };
+
         let ulStyles = {
-            whiteSpace: 'nowrap',
             width: '100%',
+            margin: 0, 
+            padding: 2, 
+            whiteSpace: 'nowrap',
             overflowX: 'auto',
+            overflowY: 'hidden',
+            backgroundColor: 'lightgrey'
         };
 
         let liStyles = {
+            margin: 2,
+            padding: 2,
             listStyleType: 'none',
             display: 'inline-block',
-            margin: '5px',
         };
 
         let deck = this.props.deck;
@@ -35,7 +50,9 @@ export default class CardListCmp extends Component {
         }
 
         return (
-            <ul style={ulStyles}>{cards}</ul>
+            <div style={divStyles}>
+                <ul style={ulStyles}>{cards}</ul>
+            </div>
         );
     }
 
