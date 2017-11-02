@@ -16,7 +16,7 @@ export default class MainPageCmp extends Component {
 
         let selectedDeck = deckService.allDecks[0];
 
-        let rect = {x: 0, y: 0, width: 100, height: 150};
+        let rect = { x: 0, y: 0, width: 100, height: 150 };
         let tableCards = [new TableCard(selectedDeck.cards[0], rect)];
 
         this.state = {
@@ -30,6 +30,8 @@ export default class MainPageCmp extends Component {
         this.handleShowDecks = this.handleShowDecks.bind(this);
         this.handleDeckSelected = this.handleDeckSelected.bind(this);
         this.handleToggleFaceBack = this.handleToggleFaceBack.bind(this);
+        this.handleDragOver = this.handleDragOver.bind(this);
+        this.handleDrop = this.handleDrop.bind(this);
     }
 
     handleShowDecks(show) {
@@ -45,8 +47,37 @@ export default class MainPageCmp extends Component {
         this.setState({ isFaceDown: isFaceDown });
     }
 
+    handleDragOver(event) {
+        console.log("handleDragOver");
+        event.preventDefault();
+    }
+
+    handleDrop(event) {
+        console.log("handleDrop");
+        event.preventDefault();
+
+        var data;
+
+        try {
+            data = JSON.parse(event.dataTransfer.getData('text'));
+        } catch (e) {
+            // If the text data isn't parsable we'll just ignore it.
+            return;
+        }
+
+        // Do something with the data
+        console.log(data);
+    }
+
     render() {
-        let tableCmp = (<TableCmp tableCards={this.state.tableCards} />);
+        let tableCmp = (
+            <div    style={{ backgroundColor: 'lightblue', margin: 5, padding: 5 }}
+                    onDragOver={this.handleDragOver}
+                    onDrop={this.handleDrop}
+            >
+                <TableCmp tableCards={this.state.tableCards} />
+            </div>
+        );
 
         let controlsCmp = (
             <ControlsCmp onShowDecks={this.handleShowDecks} />
