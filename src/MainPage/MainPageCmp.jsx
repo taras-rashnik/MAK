@@ -17,7 +17,7 @@ export default class MainPageCmp extends Component {
         let selectedDeck = deckService.allDecks[0];
 
         let rect = { x: 0, y: 0, width: 100, height: 150 };
-        let tableCards = [new TableCard(selectedDeck.cards[0], rect)];
+        let tableCards = [new TableCard(0, 5, rect)];
 
         this.state = {
             decks: deckService.allDecks,
@@ -48,12 +48,10 @@ export default class MainPageCmp extends Component {
     }
 
     handleDragOver(event) {
-        console.log("handleDragOver");
         event.preventDefault();
     }
 
     handleDrop(event) {
-        console.log("handleDrop");
         event.preventDefault();
 
         var data;
@@ -67,6 +65,9 @@ export default class MainPageCmp extends Component {
 
         // Do something with the data
         console.log(data);
+
+        this.state.tableCards.push(new TableCard(data.cardId, data.deckId, { x: 100, y: 100, width: 100, height: 150 }));
+        this.setState({tableCards: this.state.tableCards});
     }
 
     render() {

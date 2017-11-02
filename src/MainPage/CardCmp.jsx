@@ -13,8 +13,10 @@ export default class CardCmp extends Component {
 
     handleDragStart(event) {
         var data = {
-            name: 'foobar',
-            age: 15
+            cardId: this.props.cardId,
+            deckId: this.props.deckId,
+            x: event.clientX,
+            y: event.clientY,
         };
 
         event.dataTransfer.setData('text', JSON.stringify(data));

@@ -13,6 +13,17 @@ class DeckService {
     return this._decks;
   }
 
+  findDeck(deckId){
+    console.log(deckId);
+    return this._decks.find(d => d.id === deckId);
+  }
+
+  findCard(cardId, deckId){
+    console.log(`${cardId}-${deckId}`);
+    let deck = this.findDeck(deckId);
+    return deck.cards.find(c => c.id === cardId);
+  }
+
   constructor() {
     this._decks = [
       new Deck({

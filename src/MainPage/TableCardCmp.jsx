@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Group, Image, Text } from 'react-konva';
 
+import deckService from '../decks/decks-service';
+
 
 export default class TableCardCmp extends Component {
 
@@ -10,11 +12,12 @@ export default class TableCardCmp extends Component {
 
     render() {
         let tc = this.props.tableCard;
+        let card = deckService.findCard(tc.cardId, tc.deckId);
 
         return (
             <Group
                 ref="group"
-                key={tc.card.id}
+                key={tc.cardId}
                 x={tc.rect.x}
                 y={tc.rect.y}
                 width={tc.rect.width}
@@ -36,14 +39,14 @@ export default class TableCardCmp extends Component {
                     y={0}
                     width={tc.rect.width}
                     height={tc.rect.height}
-                    image={tc.card.face.image}
-                    crop={tc.card.face.crop}
+                    image={card.face.image}
+                    crop={card.face.crop}
                 />
                 <Text
                     x={0}
                     y={25}
                     width={tc.rect.width}
-                    text={tc.card.id}
+                    text={tc.cardId}
                     fontSize='30'
                     fontFamily='Calibri'
                     fill='green'
