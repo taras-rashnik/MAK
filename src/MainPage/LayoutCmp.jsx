@@ -20,7 +20,7 @@ export default class LayoutCmp extends Component {
                 <SplitterLayout
                     vertical={true} 
                     primaryIndex={0}
-                    primaryMinSize={400}
+                    primaryMinSize={50}
                     secondaryMinSize={150}
                     secondaryInitialSize={150}>
                     <div  style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden'}}>
