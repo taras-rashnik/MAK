@@ -54,6 +54,12 @@ export default class MainPageCmp extends Component {
     handleDrop(event) {
         event.preventDefault();
 
+        var dim = event.target.getBoundingClientRect();
+        var x = event.clientX - dim.left;
+        var y = event.clientY - dim.top;
+
+        // console.log(`x: ${x}; y: ${y}`);
+
         var data;
 
         try {
@@ -63,11 +69,12 @@ export default class MainPageCmp extends Component {
             return;
         }
 
-        // Do something with the data
-        console.log(data);
+        let rect = { x: x - data.x, y: y - data.y, width: 100, height: 150 };
+        let newTableCard = new TableCard(data.cardId, data.deckId, rect);
+        let tableCards = this.state.tableCards.slice();
 
-        this.state.tableCards.push(new TableCard(data.cardId, data.deckId, { x: 100, y: 100, width: 100, height: 150 }));
-        this.setState({tableCards: this.state.tableCards});
+        tableCards.push(newTableCard);
+        this.setState({tableCards});
     }
 
     render() {

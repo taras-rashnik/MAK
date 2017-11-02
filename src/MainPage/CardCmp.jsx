@@ -12,11 +12,17 @@ export default class CardCmp extends Component {
     }
 
     handleDragStart(event) {
+        var dim = event.target.getBoundingClientRect();
+        var x = event.clientX - dim.left;
+        var y = event.clientY - dim.top;
+
+        // console.log(`x: ${x}; y: ${y}`);
+
         var data = {
             cardId: this.props.cardId,
             deckId: this.props.deckId,
-            x: event.clientX,
-            y: event.clientY,
+            x: x,
+            y: y,
         };
 
         event.dataTransfer.setData('text', JSON.stringify(data));
