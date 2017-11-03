@@ -12,12 +12,18 @@ export default class MainContainer extends Component {
 
   static calculateState(prevState) {
     return {
-      counter: CardsStore.getState(),
+      mainState: CardsStore.getState(),
+    };
+  }
+
+  static getState() {
+    return {
+      mainState: CardsStore.getState(),
     };
   }
 
   render() {
-    return <MainPageCmp  />;
+    return <MainPageCmp mainState={this.state.mainState} />;
   }
 }
 

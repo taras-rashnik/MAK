@@ -103,9 +103,11 @@ export default class MainPageCmp extends Component {
                 onToggleFaceBack={this.handleToggleFaceBack} />
         );
 
+        console.log(this.props);
+        
         return (
             <LayoutCmp
-                showDecks={this.state.isDecksVisible}
+                showDecks={this.props.mainState.isDecksVisible}
                 onShowDecks={this.handleShowDecks}
                 table={tableCmp}
                 controls={controlsCmp}

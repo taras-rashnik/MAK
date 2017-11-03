@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
-import {ReduceStore} from 'flux/utils';
+import { ReduceStore } from 'flux/utils';
 
+import deckService from '../decks/decks-service';
 import CardsActionTypes from './CardsActionTypes';
 import CardsDispatcher from './CardsDispatcher';
 
@@ -11,7 +12,13 @@ class CardsStore extends ReduceStore {
   }
 
   getInitialState() {
-    return Immutable.OrderedMap();
+    return {
+      decks: deckService.allDecks,
+      selectedDeckId: deckService.allDecks[0].id,
+      isFaceDown: false,
+      tableCards: [],
+      isDecksVisible: true,
+    };
   }
 
   reduce(state, action) {
