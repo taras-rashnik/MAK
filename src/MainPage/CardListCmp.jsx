@@ -45,7 +45,7 @@ export default class CardListCmp extends Component {
 
                 return (
                     <li key={c.id} style={liStyles} >
-                        <CardCmp side={side} cardId={c.id} deckId={c.deckId} />
+                        <CardCmp side={side} cardId={c.id} />
                     </li>
                 );
             });

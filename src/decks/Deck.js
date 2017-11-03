@@ -40,8 +40,7 @@ export default class Deck {
         }
 
         this._deckCard = new Card(
-            settings.deckPictureIndex,
-            settings.id,
+            `${settings.deckPictureIndex}-${settings.id}`,
             sides[settings.deckPictureIndex],
             sides[settings.backSinedeIndex]
         );
@@ -49,8 +48,7 @@ export default class Deck {
         this._cards = sides
             .slice(0, settings.cardsNumber)
             .map((s, i) => new Card(
-                i,
-                settings.id,
+                `${i}-${settings.id}`,
                 sides[i],
                 sides[settings.backSideIndex]
             ));

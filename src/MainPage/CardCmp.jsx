@@ -20,7 +20,6 @@ export default class CardCmp extends Component {
 
         var data = {
             cardId: this.props.cardId,
-            deckId: this.props.deckId,
             x: x,
             y: y,
         };

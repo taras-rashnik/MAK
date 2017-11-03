@@ -66,7 +66,7 @@ export default class TableCardCmp extends Component {
 
     render() {
         let tc = this.props.tableCard;
-        let card = deckService.findCard(tc.cardId, tc.deckId);
+        let card = deckService.findCard(tc.cardId);
 
         return (
             <Group

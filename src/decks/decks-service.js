@@ -24,9 +24,15 @@ class DeckService {
     return this._decks.find(d => d.id === deckId);
   }
 
-  findCard(cardId, deckId){
-    let deck = this.findDeck(deckId);
-    return deck.cards.find(c => c.id === cardId);
+  findCard(cardId){
+    for(let i = 0; i < this._decks.length; i++){
+      let card = this._decks[i].cards.find(c => c.id === cardId);
+      if (card){
+        return card;
+      }
+    }
+
+    return null;
   }
 
   constructor() {

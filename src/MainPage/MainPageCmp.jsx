@@ -18,7 +18,7 @@ export default class MainPageCmp extends Component {
         let selectedDeck = deckService.allDecks[0];
 
         let rect = { x: 0, y: 0, width: 100, height: 150 };
-        let tableCards = [new TableCard(0, 5, rect)];
+        let tableCards = [new TableCard('0-5', rect)];
 
         this.state = {
             decks: deckService.allDecks,
@@ -71,7 +71,7 @@ export default class MainPageCmp extends Component {
         }
 
         let rect = { x: x - data.x, y: y - data.y, width: 100, height: 150 };
-        let newTableCard = new TableCard(data.cardId, data.deckId, rect);
+        let newTableCard = new TableCard(data.cardId, rect);
         let tableCards = this.state.tableCards.slice();
 
         tableCards.push(newTableCard);

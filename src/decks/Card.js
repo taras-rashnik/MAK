@@ -1,19 +1,14 @@
 
 export default class Card {
 
-    constructor(id, deckId, face, back) {
+    constructor(id, face, back) {
         this._id = id;
-        this._deckId = deckId;
         this._face = face;
         this._back = back;
     }
 
     get id() {
         return this._id;
-    }
-
-    get deckId() {
-        return this._deckId;
     }
 
     get face(){
