@@ -20,7 +20,7 @@ export default class Deck {
                     x: col * (settings.cardsWidth + settings.horizontalGap),
                     y: row * (settings.cardsHeight + settings.verticalGap),
                     width: settings.cardsWidth,
-                    height: settings.cardsHeight
+                    height: settings.cardsHeight,
                 };
 
                 let horizontalPercentage = col * 100 / (columnsNumber - 1);
