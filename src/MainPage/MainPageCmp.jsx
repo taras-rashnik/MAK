@@ -7,6 +7,7 @@ import TableCmp from './TableCmp';
 import DeckListCmp from './DeckListCmp';
 import CardListCmp from './CardListCmp';
 import TableCard from './TableCard';
+import CardsStore from '../Flux/CardsStore';
 
 
 export default class MainPageCmp extends Component {
@@ -74,14 +75,14 @@ export default class MainPageCmp extends Component {
         let tableCards = this.state.tableCards.slice();
 
         tableCards.push(newTableCard);
-        this.setState({tableCards});
+        this.setState({ tableCards });
     }
 
     render() {
         let tableCmp = (
-            <div    style={{ backgroundColor: 'lightblue', margin: 5, padding: 5 }}
-                    onDragOver={this.handleDragOver}
-                    onDrop={this.handleDrop}
+            <div style={{ backgroundColor: 'lightblue', margin: 5, padding: 5 }}
+                onDragOver={this.handleDragOver}
+                onDrop={this.handleDrop}
             >
                 <TableCmp tableCards={this.state.tableCards} />
             </div>
@@ -113,5 +114,4 @@ export default class MainPageCmp extends Component {
             />
         );
     }
-
 }

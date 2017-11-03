@@ -1,13 +1,67 @@
 import React, { Component } from 'react';
-import {Group, Image, Text } from 'react-konva';
+import { Group, Image, Text } from 'react-konva';
 
 import deckService from '../decks/decks-service';
+import CardsActions from '../Flux/CardsActions';
 
 
 export default class TableCardCmp extends Component {
 
     constructor(props) {
         super(props);
+    }
+
+    handleMousedown = (e) => {
+        // console.log(e);
+        this.startCoords = {
+            x: this.props.tableCard.rect.x,
+            y: this.props.tableCard.rect.y
+        };
+
+        this.startPoint = {
+            x: e.evt.clientX,
+            y: e.evt.clientY
+        };
+
+        // this.refs.group.to({
+        //     scaleX: 0.9,
+        //     scaleY: 0.9,
+        //     duration: 0.1
+        // });
+    }
+
+    handleTouchstart = (e) => {
+        // this.refs.group.to({
+        //     scaleX: 0.9,
+        //     scaleY: 0.9,
+        //     duration: 0.1
+        // });
+    }
+
+    handleDragstart = (e) => {
+        // console.log(e);
+    }
+
+    handleDragmove = (e) => {
+        let coords = {
+            x: this.startCoords.x + e.evt.clientX - this.startPoint.x,
+            y: this.startCoords.y + e.evt.clientY - this.startPoint.y,
+        };
+
+        CardsActions.moveCard(coords);
+        // this.props.onMove(coords);
+    }
+
+    handleDragend = (e) => {
+        this.handleMouseup(e);
+    }
+
+    handleMouseup = (e) => {
+        // this.refs.group.to({
+        //     scaleX: 1,
+        //     scaleY: 1,
+        //     duration: 0.1
+        // });
     }
 
     render() {
@@ -41,16 +95,6 @@ export default class TableCardCmp extends Component {
                     height={tc.rect.height}
                     image={card.face.image}
                     crop={card.face.crop}
-                />
-                <Text
-                    x={0}
-                    y={25}
-                    width={tc.rect.width}
-                    text={tc.cardId}
-                    fontSize='30'
-                    fontFamily='Calibri'
-                    fill='green'
-                    align='center'
                 />
             </Group>
 
