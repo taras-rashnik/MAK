@@ -24,10 +24,21 @@ class CardsStore extends ReduceStore {
   reduce(state, action) {
 
     switch (action.type) {
-      case CardsActionTypes.MOVE_CARD:
-        // Do nothing for now, we will add logic here soon!
+      case CardsActionTypes.MOVE_CARD: {
+        let tcard = action.tableCard;
+        tcard.rect = {...tcard.rect, x: action.coords.x, y: action.coords.y};
         return state;
-
+      }
+      case CardsActionTypes.ADD_CARD: {
+        let newState = { ...state };
+        newState.tableCards.push(action.tableCard);
+        return newState;
+      }
+      case CardsActionTypes.SHOW_DECKS_PANE: {
+        let newState = { ...state };
+        newState.isDecksVisible = action.show;
+        return newState;
+      }
       default:
         return state;
     }

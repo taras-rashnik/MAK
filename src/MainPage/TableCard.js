@@ -15,6 +15,9 @@ export default class TableCard {
   get rect() {
     return this._rect;
   }
+  set rect(val) {
+    this._rect = val;
+  }
 
   get isFaceDown() {
     return this._isFaceDown;

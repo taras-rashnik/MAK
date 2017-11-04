@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 
-import CardsStore from '../Flux/CardsStore';
-import MainPageCmp from './MainPageCmp';
+import CardsStore from './/CardsStore';
+import MainPageCmp from '../MainPage/MainPageCmp';
 
 
-export default class MainContainer extends Component {
+class MainContainer extends Component {
   static getStores() {
     return [CardsStore];
   }
@@ -16,15 +16,9 @@ export default class MainContainer extends Component {
     };
   }
 
-  static getState() {
-    return {
-      mainState: CardsStore.getState(),
-    };
-  }
-
   render() {
     return <MainPageCmp mainState={this.state.mainState} />;
   }
 }
 
-const container = Container.create(MainContainer);
+export default Container.create(MainContainer);

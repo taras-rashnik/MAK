@@ -3,19 +3,34 @@ import CardsDispatcher from './CardsDispatcher';
 
 
 let cardsActions = {
-  moveCard: function(coords){
+  moveCard: function(tableCard, coords){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.MOVE_CARD,
-      data: coords,
+      tableCard,
+      coords,
     });
   },
   
-  deleteCard: function(cardId){
+  addCardOnTable: function(tableCard){
     CardsDispatcher.dispatch({
-      type: CardsActionTypes.DELETE_CARD,
-      data: cardId,
+      type: CardsActionTypes.ADD_CARD,
+      tableCard,
     });
   },
+  
+  deleteCardFromTable: function(tableCard){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.DELETE_CARD,
+      tableCard,
+    });
+  },
+
+  showDecksPane: function(show){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.SHOW_DECKS_PANE,
+      show,
+    });
+  }
 
 }
 

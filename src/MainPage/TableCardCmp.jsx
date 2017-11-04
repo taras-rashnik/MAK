@@ -48,7 +48,7 @@ export default class TableCardCmp extends Component {
             y: this.startCoords.y + e.evt.clientY - this.startPoint.y,
         };
 
-        CardsActions.moveCard(coords);
+        CardsActions.moveCard(this.props.tableCard, coords);
         // this.props.onMove(coords);
     }
 

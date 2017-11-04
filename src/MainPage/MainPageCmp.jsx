@@ -7,7 +7,7 @@ import TableCmp from './TableCmp';
 import DeckListCmp from './DeckListCmp';
 import CardListCmp from './CardListCmp';
 import TableCard from './TableCard';
-import CardsStore from '../Flux/CardsStore';
+import CardsActions from '../Flux/CardsActions';
 
 
 export default class MainPageCmp extends Component {
@@ -24,8 +24,6 @@ export default class MainPageCmp extends Component {
             decks: deckService.allDecks,
             selectedDeck: selectedDeck,
             isFaceDown: false,
-            tableCards: tableCards,
-            isDecksVisible: true,
         };
 
         this.handleShowDecks = this.handleShowDecks.bind(this);
@@ -36,7 +34,7 @@ export default class MainPageCmp extends Component {
     }
 
     handleShowDecks(show) {
-        this.setState({ isDecksVisible: show });
+        CardsActions.showDecksPane(show);
     }
 
     handleDeckSelected(selectedDeck) {
@@ -72,10 +70,7 @@ export default class MainPageCmp extends Component {
 
         let rect = { x: x - data.x, y: y - data.y, width: 100, height: 150 };
         let newTableCard = new TableCard(data.cardId, rect);
-        let tableCards = this.state.tableCards.slice();
-
-        tableCards.push(newTableCard);
-        this.setState({ tableCards });
+        CardsActions.addCardOnTable(newTableCard);
     }
 
     render() {
@@ -84,7 +79,7 @@ export default class MainPageCmp extends Component {
                 onDragOver={this.handleDragOver}
                 onDrop={this.handleDrop}
             >
-                <TableCmp tableCards={this.state.tableCards} />
+                <TableCmp tableCards={this.props.mainState.tableCards} />
             </div>
         );
 
@@ -103,8 +98,6 @@ export default class MainPageCmp extends Component {
                 onToggleFaceBack={this.handleToggleFaceBack} />
         );
 
-        console.log(this.props);
-        
         return (
             <LayoutCmp
                 showDecks={this.props.mainState.isDecksVisible}
