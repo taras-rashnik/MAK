@@ -5,7 +5,7 @@ import ControlsCmp from './ControlsCmp';
 import TableCmp from './TableCmp';
 import DeckListCmp from './DeckListCmp';
 import CardListCmp from './CardListCmp';
-import TableCard from './TableCard';
+import CardMoniker from './CardMoniker';
 import CardsActions from '../Flux/CardsActions';
 
 
@@ -56,8 +56,8 @@ export default class MainPageCmp extends Component {
         }
 
         let rect = { x: x - data.x, y: y - data.y, width: 100, height: 150 };
-        let newTableCard = new TableCard(data.cardId, rect);
-        CardsActions.addCardOnTable(newTableCard);
+        let newCardMoniker = new CardMoniker(data.cardId, rect);
+        CardsActions.addCardOnTable(newCardMoniker);
     }
 
     render() {
@@ -66,7 +66,7 @@ export default class MainPageCmp extends Component {
                 onDragOver={this.handleDragOver}
                 onDrop={this.handleDrop}
             >
-                <TableCmp tableCards={this.props.mainState.tableCards} />
+                <TableCmp cardMonikers={this.props.mainState.cardMonikers} />
             </div>
         );
 

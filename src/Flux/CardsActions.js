@@ -4,25 +4,25 @@ import CardsDispatcher from './CardsDispatcher';
 
 let cardsActions = {
 
-  moveCard: function(tableCard, coords){
+  moveCard: function(cardMoniker, coords){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.MOVE_CARD,
-      tableCard,
+      cardMoniker,
       coords,
     });
   },
   
-  addCardOnTable: function(tableCard){
+  addCardOnTable: function(cardMoniker){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.ADD_CARD,
-      tableCard,
+      cardMoniker,
     });
   },
   
-  deleteCardFromTable: function(tableCard){
+  deleteCardFromTable: function(cardMoniker){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.DELETE_CARD,
-      tableCard,
+      cardMoniker,
     });
   },
 

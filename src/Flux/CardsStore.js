@@ -16,7 +16,7 @@ class CardsStore extends ReduceStore {
       decks: deckService.allDecks,
       selectedDeck: deckService.allDecks[0],
       isFaceDown: false,
-      tableCards: [],
+      cardMonikers: [],
       isDecksVisible: true,
     };
   }
@@ -25,13 +25,13 @@ class CardsStore extends ReduceStore {
 
     switch (action.type) {
       case CardsActionTypes.MOVE_CARD: {
-        let tcard = action.tableCard;
+        let tcard = action.cardMoniker;
         tcard.rect = {...tcard.rect, x: action.coords.x, y: action.coords.y};
         return state;
       }
       case CardsActionTypes.ADD_CARD: {
         let newState = { ...state };
-        newState.tableCards.push(action.tableCard);
+        newState.cardMonikers.push(action.cardMoniker);
         return newState;
       }
       case CardsActionTypes.SHOW_DECKS_PANE: {

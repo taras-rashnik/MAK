@@ -36,9 +36,9 @@ export default class TableCmp extends Component {
     }
 
     render() {
-        let cards = this.props.tableCards.map((tc, i) => {
+        let cards = this.props.cardMonikers.map((cm, i) => {
             return (
-                <TableCardCmp key={i} tableCard={tc} />
+                <TableCardCmp key={i} cardMoniker={cm} />
             );
         });
 

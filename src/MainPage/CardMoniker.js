@@ -1,7 +1,7 @@
 import Card from '../decks/Card';
 
 
-export default class TableCard {
+export default class CardMoniker {
   constructor(cardId, rect) {
     this._cardId = cardId;
     this._rect = {...rect};

@@ -14,8 +14,8 @@ export default class TableCardCmp extends Component {
     handleMousedown = (e) => {
         // console.log(e);
         this.startCoords = {
-            x: this.props.tableCard.rect.x,
-            y: this.props.tableCard.rect.y
+            x: this.props.cardMoniker.rect.x,
+            y: this.props.cardMoniker.rect.y
         };
 
         this.startPoint = {
@@ -48,7 +48,7 @@ export default class TableCardCmp extends Component {
             y: this.startCoords.y + e.evt.clientY - this.startPoint.y,
         };
 
-        CardsActions.moveCard(this.props.tableCard, coords);
+        CardsActions.moveCard(this.props.cardMoniker, coords);
         // this.props.onMove(coords);
     }
 
@@ -65,17 +65,17 @@ export default class TableCardCmp extends Component {
     }
 
     render() {
-        let tc = this.props.tableCard;
-        let card = deckService.findCard(tc.cardId);
+        let cm = this.props.cardMoniker;
+        let card = deckService.findCard(cm.cardId);
 
         return (
             <Group
                 ref="group"
-                key={tc.cardId}
-                x={tc.rect.x}
-                y={tc.rect.y}
-                width={tc.rect.width}
-                height={tc.rect.height}
+                key={cm.cardId}
+                x={cm.rect.x}
+                y={cm.rect.y}
+                width={cm.rect.width}
+                height={cm.rect.height}
                 draggable={true}
 
                 onMousedown={this.handleMousedown}
@@ -91,8 +91,8 @@ export default class TableCardCmp extends Component {
                 <Image
                     x={0}
                     y={0}
-                    width={tc.rect.width}
-                    height={tc.rect.height}
+                    width={cm.rect.width}
+                    height={cm.rect.height}
                     image={card.face.image}
                     crop={card.face.crop}
                 />
