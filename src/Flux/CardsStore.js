@@ -14,7 +14,7 @@ class CardsStore extends ReduceStore {
   getInitialState() {
     return {
       decks: deckService.allDecks,
-      selectedDeckId: deckService.allDecks[0].id,
+      selectedDeck: deckService.allDecks[0],
       isFaceDown: false,
       tableCards: [],
       isDecksVisible: true,
@@ -37,6 +37,16 @@ class CardsStore extends ReduceStore {
       case CardsActionTypes.SHOW_DECKS_PANE: {
         let newState = { ...state };
         newState.isDecksVisible = action.show;
+        return newState;
+      }
+      case CardsActionTypes.SELECT_DECK: {
+        let newState = { ...state };
+        newState.selectedDeck = action.deck;
+        return newState;
+      }
+      case CardsActionTypes.TOGGLE_FACE_BACK_IN_PANE: {
+        let newState = { ...state };
+        newState.isFaceDown = !newState.isFaceDown;
         return newState;
       }
       default:

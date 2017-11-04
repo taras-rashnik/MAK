@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import deckService from '../decks/decks-service';
 import LayoutCmp from './LayoutCmp';
 import ControlsCmp from './ControlsCmp';
 import TableCmp from './TableCmp';
@@ -15,17 +14,6 @@ export default class MainPageCmp extends Component {
     constructor(props) {
         super(props);
 
-        let selectedDeck = deckService.allDecks[0];
-
-        let rect = { x: 0, y: 0, width: 100, height: 150 };
-        let tableCards = [new TableCard('0-5', rect)];
-
-        this.state = {
-            decks: deckService.allDecks,
-            selectedDeck: selectedDeck,
-            isFaceDown: false,
-        };
-
         this.handleShowDecks = this.handleShowDecks.bind(this);
         this.handleDeckSelected = this.handleDeckSelected.bind(this);
         this.handleToggleFaceBack = this.handleToggleFaceBack.bind(this);
@@ -37,13 +25,12 @@ export default class MainPageCmp extends Component {
         CardsActions.showDecksPane(show);
     }
 
-    handleDeckSelected(selectedDeck) {
-        this.setState({ selectedDeck: selectedDeck });
+    handleDeckSelected(deck) {
+        CardsActions.selectDeck(deck);
     }
 
     handleToggleFaceBack() {
-        let isFaceDown = !this.state.isFaceDown;
-        this.setState({ isFaceDown: isFaceDown });
+        CardsActions.toggleFaceBackInPane();
     }
 
     handleDragOver(event) {
@@ -88,13 +75,13 @@ export default class MainPageCmp extends Component {
         );
 
         let deckListCmp = (
-            <DeckListCmp decks={this.state.decks} onDeckSelected={this.handleDeckSelected} />
+            <DeckListCmp decks={this.props.mainState.decks} onDeckSelected={this.handleDeckSelected} />
         );
 
         let cardListCmp = (
             <CardListCmp
-                deck={this.state.selectedDeck}
-                isFaceDown={this.state.isFaceDown}
+                deck={this.props.mainState.selectedDeck}
+                isFaceDown={this.props.mainState.isFaceDown}
                 onToggleFaceBack={this.handleToggleFaceBack} />
         );
 

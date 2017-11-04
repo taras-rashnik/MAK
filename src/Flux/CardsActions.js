@@ -3,6 +3,7 @@ import CardsDispatcher from './CardsDispatcher';
 
 
 let cardsActions = {
+
   moveCard: function(tableCard, coords){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.MOVE_CARD,
@@ -30,7 +31,20 @@ let cardsActions = {
       type: CardsActionTypes.SHOW_DECKS_PANE,
       show,
     });
-  }
+  },
+
+  selectDeck: function(deck){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.SELECT_DECK,
+      deck,
+    });
+  },
+
+  toggleFaceBackInPane: function(){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.TOGGLE_FACE_BACK_IN_PANE,
+    });
+  },
 
 }
 
