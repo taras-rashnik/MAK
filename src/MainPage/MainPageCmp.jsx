@@ -68,7 +68,9 @@ export default class MainPageCmp extends Component {
                 onDragOver={this.handleDragOver}
                 onDrop={this.handleDrop}
             >
-                <TableCmp cardMonikers={this.props.mainState.cardMonikers} />
+                <TableCmp   cardMonikers={this.props.mainState.cardMonikers}
+                            selectedCard={this.props.mainState.selectedCard}
+                />
             </div>
         );
 

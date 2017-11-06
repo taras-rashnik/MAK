@@ -3,6 +3,7 @@ import { Group, Image, Text } from 'react-konva';
 
 import deckService from '../decks/decks-service';
 import CardsActions from '../Flux/CardsActions';
+import GripFrame from './GripFrame';
 
 
 export default class TableCardCmp extends Component {
@@ -22,8 +23,8 @@ export default class TableCardCmp extends Component {
             x: e.evt.clientX,
             y: e.evt.clientY
         };
-        
-        CardsActions.selectCard(this.props.cardMoniker);  
+
+        CardsActions.selectCard(this.props.cardMoniker);
 
         // this.refs.group.to({
         //     scaleX: 0.9,
@@ -42,9 +43,9 @@ export default class TableCardCmp extends Component {
 
     handleDragstart = (e) => {
         // console.log(e);
-        
+
         // this.refs.group.moveToTop();
-        
+
     }
 
     handleDragmove = (e) => {
@@ -76,7 +77,7 @@ export default class TableCardCmp extends Component {
         return (
             <Group
                 ref="group"
-                key={cm.id}
+                key={cm.key}
                 x={cm.rect.x}
                 y={cm.rect.y}
                 width={cm.rect.width}
@@ -93,14 +94,16 @@ export default class TableCardCmp extends Component {
                 onDragmove={this.handleDragmove}
                 onDragend={this.handleDragend}
             >
-                <Image
-                    x={0}
-                    y={0}
-                    width={cm.rect.width}
-                    height={cm.rect.height}
-                    image={card.face.image}
-                    crop={card.face.crop}
-                />
+                <GripFrame isSelected={this.props.isSelected} cardMoniker={cm}>
+                    <Image
+                        x={0}
+                        y={0}
+                        width={cm.rect.width}
+                        height={cm.rect.height}
+                        image={card.face.image}
+                        crop={card.face.crop}
+                    />
+                </GripFrame>
             </Group>
 
         );

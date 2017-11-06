@@ -38,7 +38,7 @@ export default class TableCmp extends Component {
     render() {
         let cards = this.props.cardMonikers.map((cm, i) => {
             return (
-                <TableCardCmp key={cm.key} cardMoniker={cm} />
+                <TableCardCmp key={cm.key} cardMoniker={cm} isSelected={cm === this.props.selectedCard} />
             );
         });
 
