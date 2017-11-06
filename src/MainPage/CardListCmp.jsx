@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CardCmp from './CardCmp';
+import deckService from '../decks/decks-service';
 
 
 export default class CardListCmp extends Component {
@@ -37,9 +38,11 @@ export default class CardListCmp extends Component {
             display: 'inline-block',
         };
 
-        let deck = this.props.deck;
         let cards = [];
-        if (deck) {
+        let deckMoniker = this.props.deckMoniker;
+
+        if (deckMoniker) {
+            let deck = deckService.findDeck(deckMoniker.id);
             cards = deck.cards.map(c => {
                 let side = this.props.isFaceDown ? c.back : c.face;
 

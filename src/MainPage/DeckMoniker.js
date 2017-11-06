@@ -1,10 +1,15 @@
 
 export default class DeckMoniker {
-  constructor(deckId) {
-    this._deckId = deckId;
+  constructor(id, name) {
+    this._id = id;
+    this._name = name;
   }
 
-  get deckId() {
-    return this._deckId;
+  get id() {
+    return this._id;
+  }
+
+  get name() {
+    return this._name;
   }
 }

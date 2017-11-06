@@ -22,6 +22,8 @@ export default class TableCardCmp extends Component {
             x: e.evt.clientX,
             y: e.evt.clientY
         };
+        
+        CardsActions.selectCard(this.props.cardMoniker);  
 
         // this.refs.group.to({
         //     scaleX: 0.9,
@@ -40,6 +42,9 @@ export default class TableCardCmp extends Component {
 
     handleDragstart = (e) => {
         // console.log(e);
+        
+        // this.refs.group.moveToTop();
+        
     }
 
     handleDragmove = (e) => {
@@ -66,12 +71,12 @@ export default class TableCardCmp extends Component {
 
     render() {
         let cm = this.props.cardMoniker;
-        let card = deckService.findCard(cm.cardId);
+        let card = deckService.findCard(cm.id);
 
         return (
             <Group
                 ref="group"
-                key={cm.cardId}
+                key={cm.id}
                 x={cm.rect.x}
                 y={cm.rect.y}
                 width={cm.rect.width}

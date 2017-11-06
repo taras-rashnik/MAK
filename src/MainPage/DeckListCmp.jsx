@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import DeckCmp from './DeckCmp';
+import deckService from '../decks/decks-service';
+
 
 export default class DeckListCmp extends Component {
 
@@ -28,7 +30,7 @@ export default class DeckListCmp extends Component {
             listStyleType: 'none',
         };
 
-        let decks = this.props.decks.map(d => {
+        let decks = deckService.allDecks.map(d => {
             return (
                 <li key={d.id} style={liStyles}>
                     <DeckCmp deck={d} onSelected={() => this.props.onDeckSelected(d)} />

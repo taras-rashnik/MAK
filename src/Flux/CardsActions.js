@@ -3,14 +3,6 @@ import CardsDispatcher from './CardsDispatcher';
 
 
 let cardsActions = {
-
-  moveCard: function(cardMoniker, coords){
-    CardsDispatcher.dispatch({
-      type: CardsActionTypes.MOVE_CARD,
-      cardMoniker,
-      coords,
-    });
-  },
   
   addCardOnTable: function(cardMoniker){
     CardsDispatcher.dispatch({
@@ -26,6 +18,21 @@ let cardsActions = {
     });
   },
 
+  selectCard: function(cardMoniker){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.SELECT_CARD,
+      cardMoniker,
+    });
+  },
+
+  moveCard: function(cardMoniker, coords){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.MOVE_CARD,
+      cardMoniker,
+      coords,
+    });
+  },
+
   showDecksPane: function(show){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.SHOW_DECKS_PANE,
@@ -33,10 +40,10 @@ let cardsActions = {
     });
   },
 
-  selectDeck: function(deck){
+  selectDeck: function(deckMoniker){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.SELECT_DECK,
-      deck,
+      deckMoniker,
     });
   },
 

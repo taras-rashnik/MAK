@@ -1,13 +1,19 @@
 
 export default class CardMoniker {
-  constructor(cardId, rect) {
-    this._cardId = cardId;
+  constructor(id, rect) {
+    this._id = id;
     this._rect = {...rect};
     this._isFaceDown = false;
+
+    this._key = new Date().getUTCMilliseconds();
   }
 
-  get cardId() {
-    return this._cardId;
+  get id() {
+    return this._id;
+  }
+
+  get key() {
+    return this._key;
   }
 
   get rect() {

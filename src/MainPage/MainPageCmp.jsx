@@ -6,6 +6,7 @@ import TableCmp from './TableCmp';
 import DeckListCmp from './DeckListCmp';
 import CardListCmp from './CardListCmp';
 import CardMoniker from './CardMoniker';
+import DeckMoniker from './DeckMoniker';
 import CardsActions from '../Flux/CardsActions';
 
 
@@ -26,7 +27,8 @@ export default class MainPageCmp extends Component {
     }
 
     handleDeckSelected(deck) {
-        CardsActions.selectDeck(deck);
+        let deckMoniker = new DeckMoniker(deck.id, deck.name);
+        CardsActions.selectDeck(deckMoniker);
     }
 
     handleToggleFaceBack() {
@@ -75,12 +77,12 @@ export default class MainPageCmp extends Component {
         );
 
         let deckListCmp = (
-            <DeckListCmp decks={this.props.mainState.decks} onDeckSelected={this.handleDeckSelected} />
+            <DeckListCmp onDeckSelected={this.handleDeckSelected} />
         );
 
         let cardListCmp = (
             <CardListCmp
-                deck={this.props.mainState.selectedDeck}
+                deckMoniker={this.props.mainState.selectedDeck}
                 isFaceDown={this.props.mainState.isFaceDown}
                 onToggleFaceBack={this.handleToggleFaceBack} />
         );
