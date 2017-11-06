@@ -52,7 +52,8 @@ export default class TableCmp extends Component {
                         x={0} y={0}
                         width={this.state.canvasWidth} height={this.state.canvasHeight}
                         opacity={0}
-                        onClick={CardsActions.unselectAllCards} />
+                        onClick={CardsActions.unselectAllCards} 
+                        onTap={CardsActions.unselectAllCards} />
                     {cards}
                 </Layer>
             </Stage>

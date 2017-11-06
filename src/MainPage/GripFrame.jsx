@@ -24,7 +24,8 @@ export default class GripFrame extends Component {
             x={rect.width + 10} y={-30}
             width={20} height={20}
             fill={'red'} stroke={'black'} strokeWidth={4} 
-            onClick={() => CardsActions.deleteCardFromTable(cm)}/>
+            onClick={() => CardsActions.deleteCardFromTable(cm)}
+            onTap={() => CardsActions.deleteCardFromTable(cm)}/>
 
           <Circle name={'Rotate button'}
             x={rect.width/2} y={-40}

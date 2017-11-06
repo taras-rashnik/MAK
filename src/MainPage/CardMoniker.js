@@ -1,3 +1,4 @@
+var global_counter = 0;
 
 export default class CardMoniker {
   constructor(id, rect) {
@@ -5,7 +6,7 @@ export default class CardMoniker {
     this._rect = {...rect};
     this._isFaceDown = false;
 
-    this._key = new Date().getUTCMilliseconds();
+    this._key = ++global_counter;
   }
 
   get id() {

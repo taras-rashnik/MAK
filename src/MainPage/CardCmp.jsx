@@ -31,7 +31,10 @@ export default class CardCmp extends Component {
         let side = this.props.side;
 
         return (
-            <div draggable="true" onDragStart={this.handleDragStart} style={{ width: 80, height: 120, padding: 0, margin: 0 }}>
+            <div    draggable="true" 
+                    onDragStart={this.handleDragStart} 
+                    onDoubleClick={() => this.props.onAddCard(this.props.cardId)}
+                    style={{ width: 80, height: 120, padding: 0, margin: 0 }}>
                 <SpriteCmp styles={side.styles} />
             </div>
         );

@@ -20,6 +20,7 @@ export default class MainPageCmp extends Component {
         this.handleToggleFaceBack = this.handleToggleFaceBack.bind(this);
         this.handleDragOver = this.handleDragOver.bind(this);
         this.handleDrop = this.handleDrop.bind(this);
+        this.handleAddCard = this.handleAddCard.bind(this);
     }
 
     handleShowDecks(show) {
@@ -62,14 +63,20 @@ export default class MainPageCmp extends Component {
         CardsActions.addCardOnTable(newCardMoniker);
     }
 
+    handleAddCard(cardId) {
+        let rect = { x: 50, y: 50, width: 100, height: 150 };
+        let newCardMoniker = new CardMoniker(cardId, rect);
+        CardsActions.addCardOnTable(newCardMoniker);
+    }
+
     render() {
         let tableCmp = (
             <div style={{ backgroundColor: 'lightblue', margin: 5, padding: 5 }}
                 onDragOver={this.handleDragOver}
                 onDrop={this.handleDrop}
             >
-                <TableCmp   cardMonikers={this.props.mainState.cardMonikers}
-                            selectedCard={this.props.mainState.selectedCard}
+                <TableCmp cardMonikers={this.props.mainState.cardMonikers}
+                    selectedCard={this.props.mainState.selectedCard}
                 />
             </div>
         );
@@ -86,7 +93,8 @@ export default class MainPageCmp extends Component {
             <CardListCmp
                 deckMoniker={this.props.mainState.selectedDeck}
                 isFaceDown={this.props.mainState.isFaceDown}
-                onToggleFaceBack={this.handleToggleFaceBack} />
+                onToggleFaceBack={this.handleToggleFaceBack}
+                onAddCard={this.handleAddCard} />
         );
 
         return (

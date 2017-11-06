@@ -48,14 +48,14 @@ export default class CardListCmp extends Component {
 
                 return (
                     <li key={c.id} style={liStyles} >
-                        <CardCmp side={side} cardId={c.id} />
+                        <CardCmp side={side} cardId={c.id} onAddCard={this.props.onAddCard}/>
                     </li>
                 );
             });
         }
 
         return (
-            <div style={divStyles} onDoubleClick={this.props.onToggleFaceBack}>
+            <div style={divStyles} >
                 <ul style={ulStyles}>{cards}</ul>
             </div>
         );
