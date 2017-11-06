@@ -1,5 +1,3 @@
-import Card from '../decks/Card';
-
 
 export default class CardMoniker {
   constructor(cardId, rect) {
