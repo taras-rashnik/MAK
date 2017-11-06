@@ -25,6 +25,12 @@ let cardsActions = {
     });
   },
 
+  unselectAllCards: function(){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.UNSELECT_ALL_CARD
+    });
+  },
+
   moveCard: function(cardMoniker, coords){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.MOVE_CARD,

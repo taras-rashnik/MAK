@@ -28,6 +28,11 @@ class CardsStore extends ReduceStore {
         newState.cardMonikers.push(action.cardMoniker);
         return newState;
       }
+      case CardsActionTypes.DELETE_CARD: {
+        let newState = { ...state };
+        newState.cardMonikers = newState.cardMonikers.filter(cm => cm !== action.cardMoniker);
+        return newState;
+      }
       case CardsActionTypes.SELECT_CARD: {
         if (state.selectedCard !== action.cardMoniker) {
           let newState = { ...state };
@@ -37,6 +42,15 @@ class CardsStore extends ReduceStore {
           newState.cardMonikers = newState.cardMonikers.filter(cm => cm !== action.cardMoniker);
           newState.cardMonikers.push(action.cardMoniker);
 
+          return newState;
+        } else {
+          return state;
+        }
+      }
+      case CardsActionTypes.UNSELECT_ALL_CARD: {
+        if (state.selectedCard) {
+          let newState = { ...state };
+          newState.selectedCard = null;
           return newState;
         } else {
           return state;

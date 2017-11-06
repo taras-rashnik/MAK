@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Layer, Stage } from 'react-konva';
+import { Layer, Stage, Rect } from 'react-konva';
 
 import TableCardCmp from './TableCardCmp';
+import CardsActions from '../Flux/CardsActions';
 
 
 export default class TableCmp extends Component {
@@ -47,6 +48,11 @@ export default class TableCmp extends Component {
                 width={this.state.canvasWidth}
                 height={this.state.canvasHeight}>
                 <Layer>
+                    <Rect name={'Fake transparent rect to get Table events'}
+                        x={0} y={0}
+                        width={this.state.canvasWidth} height={this.state.canvasHeight}
+                        opacity={0}
+                        onClick={CardsActions.unselectAllCards} />
                     {cards}
                 </Layer>
             </Stage>
