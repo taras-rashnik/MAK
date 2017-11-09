@@ -71,7 +71,7 @@ export default class MainPageCmp extends Component {
 
     render() {
         let tableCmp = (
-            <div style={{ backgroundColor: 'lightblue', margin: 5, padding: 5 }}
+            <div style={{ margin: 5, padding: 5 }}
                 onDragOver={this.handleDragOver}
                 onDrop={this.handleDrop}
             >

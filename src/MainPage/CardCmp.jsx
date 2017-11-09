@@ -44,7 +44,7 @@ export default class CardCmp extends Component {
 
         if(this.props.selected){
             style.transform = 'scale(1.2)';
-            style.borderColor = 'blue';
+            style.borderColor = 'pink';
         }
 
         return (
@@ -52,7 +52,6 @@ export default class CardCmp extends Component {
                     onDragStart={this.handleDragStart} 
                     onDoubleClick={() => this.props.onAddCard(this.props.cardId)}
                     onClick={() => CardsActions.selectCardInDeck(this.props.cardId)}
-                    onTap={() => CardsActions.selectCardInDeck(this.props.cardId)}
                     style={style}>
                 <SpriteCmp styles={side.styles} />
             </div>

@@ -16,7 +16,6 @@ export default class CardListCmp extends Component {
             height: '100%',
             margin: 0,
             padding: 0,
-            backgroundColor: 'lightgrey',
             overflowX: 'hidden',
             overflowY: 'hidden'
         };
@@ -28,7 +27,6 @@ export default class CardListCmp extends Component {
             whiteSpace: 'nowrap',
             overflowX: 'auto',
             overflowY: 'hidden',
-            backgroundColor: 'lightgrey'
         };
 
         let liStyles = {

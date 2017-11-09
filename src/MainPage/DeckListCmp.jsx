@@ -19,13 +19,11 @@ export default class DeckListCmp extends Component {
             height: '100%',
             margin: 0, 
             padding: 0, 
-            backgroundColor: 'lightgrey', 
         };
 
         let ulStyles = {
             margin: 0, 
             padding: 2, 
-            backgroundColor: 'lightgrey',
         };
 
         let liStyles = {
