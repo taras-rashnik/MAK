@@ -45,7 +45,7 @@ export default class TableCardCmp extends Component {
     }
 
     handleDragmove = (e) => {
-        let touchPos = this._group.getStage().getPointerPosition();        
+        let touchPos = this._group.getStage().getPointerPosition();
         let coords = {
             x: this.startCoords.x + touchPos.x - this.startPoint.x,
             y: this.startCoords.y + touchPos.y - this.startPoint.y,
@@ -57,6 +57,13 @@ export default class TableCardCmp extends Component {
 
     render() {
         let cm = this.props.cardMoniker;
+        
+        let x = 0;
+        let y = 0;
+        let width = cm.rect.width;
+        let height = cm.rect.height;
+        const cornerRadius = 10;
+
         let card = deckService.findCard(cm.id);
         let side = cm.isFaceDown ? card.back : card.face;
 
@@ -64,10 +71,12 @@ export default class TableCardCmp extends Component {
             <Group
                 ref={g => this._group = g}
                 key={cm.key}
-                x={cm.rect.x}
-                y={cm.rect.y}
-                width={cm.rect.width}
-                height={cm.rect.height}
+                x={x}
+                y={y}
+                width={width}
+                height={height}
+
+
                 draggable={true}
 
                 onMousedown={this.handleMousedown}
@@ -77,16 +86,31 @@ export default class TableCardCmp extends Component {
 
                 onTap={() => CardsActions.selectCard(this.props.cardMoniker)}
                 onDblClick={() => CardsActions.flipCard(this.props.cardMoniker)}
+                onDblTap={() => CardsActions.flipCard(this.props.cardMoniker)}
             >
                 <GripFrame isSelected={this.props.isSelected} cardMoniker={cm}>
-                    <Image
-                        x={0}
-                        y={0}
-                        width={cm.rect.width}
-                        height={cm.rect.height}
-                        image={side.image}
-                        crop={side.crop}
-                    />
+                    <Group clipFunc={ctx => {
+                        ctx.beginPath()
+                        ctx.moveTo(x + cornerRadius, y)
+                        ctx.lineTo(x + width - cornerRadius, y)
+                        ctx.quadraticCurveTo(x + width, y, x + width, y + cornerRadius)
+                        ctx.lineTo(x + width, y + height - cornerRadius)
+                        ctx.quadraticCurveTo(x + width, y + height, x + width - cornerRadius, y + height)
+                        ctx.lineTo(x + cornerRadius, y + height)
+                        ctx.quadraticCurveTo(x, y + height, x, y + height - cornerRadius)
+                        ctx.lineTo(x, y + cornerRadius)
+                        ctx.quadraticCurveTo(x, y, x + cornerRadius, y)
+                        ctx.closePath()
+                    }}>
+                        <Image
+                            x={0}
+                            y={0}
+                            width={width}
+                            height={height}
+                            image={side.image}
+                            crop={side.crop}
+                        />
+                    </Group>
                 </GripFrame>
             </Group>
 

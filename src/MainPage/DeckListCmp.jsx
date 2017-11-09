@@ -10,6 +10,10 @@ export default class DeckListCmp extends Component {
         super(props);
     }
 
+    componentDidMount(){
+        this.props.onDeckSelected(deckService.allDecks[0]);
+    }
+
     render() {
         let divStyles = {
             height: '100%',
