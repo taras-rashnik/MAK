@@ -37,7 +37,7 @@ class CardsStore extends ReduceStore {
           }
         }
 
-        if(!isPlaceOcupied){
+        if (!isPlaceOcupied) {
           break;
         }
       }
@@ -71,6 +71,11 @@ class CardsStore extends ReduceStore {
         } else {
           return state;
         }
+      }
+      case CardsActionTypes.FLIP_CARD: {
+        let newState = { ...state };
+        action.cardMoniker.isFaceDown = !action.cardMoniker.isFaceDown;
+        return newState;
       }
       case CardsActionTypes.UNSELECT_ALL_CARD: {
         if (state.selectedCard) {

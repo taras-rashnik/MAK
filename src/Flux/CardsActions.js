@@ -25,6 +25,13 @@ let cardsActions = {
     });
   },
 
+  flipCard: function(cardMoniker){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.FLIP_CARD,
+      cardMoniker,
+    });
+  },
+
   unselectAllCards: function(){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.UNSELECT_ALL_CARD

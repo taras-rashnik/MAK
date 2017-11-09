@@ -58,6 +58,7 @@ export default class TableCardCmp extends Component {
     render() {
         let cm = this.props.cardMoniker;
         let card = deckService.findCard(cm.id);
+        let side = cm.isFaceDown ? card.back : card.face;
 
         return (
             <Group
@@ -75,6 +76,7 @@ export default class TableCardCmp extends Component {
                 onDragmove={this.handleDragmove}
 
                 onTap={() => CardsActions.selectCard(this.props.cardMoniker)}
+                onDblClick={() => CardsActions.flipCard(this.props.cardMoniker)}
             >
                 <GripFrame isSelected={this.props.isSelected} cardMoniker={cm}>
                     <Image
@@ -82,8 +84,8 @@ export default class TableCardCmp extends Component {
                         y={0}
                         width={cm.rect.width}
                         height={cm.rect.height}
-                        image={card.face.image}
-                        crop={card.face.crop}
+                        image={side.image}
+                        crop={side.crop}
                     />
                 </GripFrame>
             </Group>
