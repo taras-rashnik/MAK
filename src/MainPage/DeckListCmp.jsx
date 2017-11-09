@@ -6,10 +6,6 @@ import deckService from '../decks/decks-service';
 
 export default class DeckListCmp extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount(){
         this.props.onDeckSelected(deckService.allDecks[0]);
     }

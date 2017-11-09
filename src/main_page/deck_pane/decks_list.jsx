@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import deckService, { Deck, Card } from '../../decks/decks-service';
+import deckService from '../../decks/decks-service';
 
 
 export default class DecksList extends Component {

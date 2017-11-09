@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layer, Stage, Image, Rect } from 'react-konva';
+import { Layer, Stage, Rect } from 'react-konva';
 
 export default class Test1 extends Component {
     render() {

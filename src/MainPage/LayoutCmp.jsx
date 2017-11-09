@@ -7,10 +7,6 @@ import backgroundUrl from "../backgrounds/background-2044512.jpg";
 
 export default class LayoutCmp extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let style = {
             backgroundImage: `url("${backgroundUrl}")`,

@@ -6,10 +6,6 @@ import deckService from '../decks/decks-service';
 
 export default class CardListCmp extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let divStyles = {
             width: '100%',

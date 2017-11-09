@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+// import Immutable from 'immutable';
 import { ReduceStore } from 'flux/utils';
 
 import CardsActionTypes from './CardsActionTypes';

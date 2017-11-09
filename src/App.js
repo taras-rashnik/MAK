@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
-import logo from './logo.svg';
 import './App.css';
 import MainContainer from './Flux/MainContainer';
 import Layout from './main_page/layout';

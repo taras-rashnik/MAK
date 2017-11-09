@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Group, Image, Text } from 'react-konva';
+import { Group, Image } from 'react-konva';
 
 import deckService from '../decks/decks-service';
 import CardsActions from '../Flux/CardsActions';
@@ -7,10 +7,6 @@ import GripFrame from './GripFrame';
 
 
 export default class TableCardCmp extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     handleMousedown = (e) => {
         this.startCoords = {

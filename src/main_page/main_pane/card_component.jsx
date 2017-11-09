@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { Rect, Group, Text, Image } from 'react-konva';
+import { Group, Text, Image } from 'react-konva';
 
 export default class CardComponent extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   handleMouseup = (e) => {
     this.refs.group.to({

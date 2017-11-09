@@ -5,10 +5,6 @@ import SpriteCmp from './SpriteCmp';
 
 export default class DeckCmp extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let deck = this.props.deck;
 
