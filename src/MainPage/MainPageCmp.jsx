@@ -64,7 +64,7 @@ export default class MainPageCmp extends Component {
     }
 
     handleAddCard(cardId) {
-        let rect = { x: 50, y: 50, width: 100, height: 150 };
+        let rect = { x: -1, y: -1, width: 100, height: 150 };
         let newCardMoniker = new CardMoniker(cardId, rect);
         CardsActions.addCardOnTable(newCardMoniker);
     }

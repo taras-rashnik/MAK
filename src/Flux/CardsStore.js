@@ -20,11 +20,36 @@ class CardsStore extends ReduceStore {
     };
   }
 
+  _placeNewCard(newCardMoniker, cardMonikers) {
+    const shift = 20;
+    let rect = newCardMoniker.rect;
+    if (rect.x === -1 && rect.y === -1) {
+      for (var i = 1; i <= 15; i++) {
+        rect.x = i * shift;
+        rect.y = i * shift;
+
+        let isPlaceOcupied = false;
+        for (var j = 0; j < cardMonikers.length; j++) {
+          var card = cardMonikers[j];
+          if (rect.x === card.rect.x && rect.y === card.rect.y) {
+            isPlaceOcupied = true;
+            break;
+          }
+        }
+
+        if(!isPlaceOcupied){
+          break;
+        }
+      }
+    }
+  }
+
   reduce(state, action) {
 
     switch (action.type) {
       case CardsActionTypes.ADD_CARD: {
         let newState = { ...state };
+        this._placeNewCard(action.cardMoniker, newState.cardMonikers);
         newState.cardMonikers.push(action.cardMoniker);
         return newState;
       }
