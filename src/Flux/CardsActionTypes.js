@@ -14,6 +14,7 @@ var ActionTypes  = {
   FLIP_CARD: 'FLIP_CARD',
   UNSELECT_ALL_CARD: 'UNSELECT_ALL_CARD',
   SELECT_DECK: 'SELECT_DECK',
+  SELECT_CARD_IN_DECK: 'SELECT_CARD_IN_DECK',
 };
 
 export default ActionTypes;

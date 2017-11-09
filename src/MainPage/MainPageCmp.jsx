@@ -92,6 +92,7 @@ export default class MainPageCmp extends Component {
         let cardListCmp = (
             <CardListCmp
                 deckMoniker={this.props.mainState.selectedDeck}
+                selectedCardId={this.props.mainState.selectedCardInDeck}
                 isFaceDown={this.props.mainState.isFaceDown}
                 onToggleFaceBack={this.handleToggleFaceBack}
                 onAddCard={this.handleAddCard} />

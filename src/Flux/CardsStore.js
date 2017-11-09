@@ -13,6 +13,7 @@ class CardsStore extends ReduceStore {
   getInitialState() {
     return {
       selectedDeck: null,
+      selectedCardInDeck: null,
       selectedCard: null,
       isFaceDown: false,
       cardMonikers: [],
@@ -99,6 +100,12 @@ class CardsStore extends ReduceStore {
       case CardsActionTypes.SELECT_DECK: {
         let newState = { ...state };
         newState.selectedDeck = action.deckMoniker;
+        newState.selectedCardInDeck = null;
+        return newState;
+      }
+      case CardsActionTypes.SELECT_CARD_IN_DECK: {
+        let newState = { ...state };
+        newState.selectedCardInDeck = action.cardId;
         return newState;
       }
       case CardsActionTypes.TOGGLE_FACE_BACK_IN_PANE: {

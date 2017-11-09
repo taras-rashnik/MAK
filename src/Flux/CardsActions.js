@@ -60,6 +60,13 @@ let cardsActions = {
     });
   },
 
+  selectCardInDeck: function(cardId){
+    CardsDispatcher.dispatch({
+      type: CardsActionTypes.SELECT_CARD_IN_DECK,
+      cardId,
+    });
+  },
+
   toggleFaceBackInPane: function(){
     CardsDispatcher.dispatch({
       type: CardsActionTypes.TOGGLE_FACE_BACK_IN_PANE,

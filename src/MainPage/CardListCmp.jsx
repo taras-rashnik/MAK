@@ -24,7 +24,7 @@ export default class CardListCmp extends Component {
         let ulStyles = {
             width: '100%',
             margin: 0,
-            padding: 2,
+            padding: 8,
             whiteSpace: 'nowrap',
             overflowX: 'auto',
             overflowY: 'hidden',
@@ -48,7 +48,11 @@ export default class CardListCmp extends Component {
 
                 return (
                     <li key={c.id} style={liStyles} >
-                        <CardCmp side={side} cardId={c.id} onAddCard={this.props.onAddCard}/>
+                        <CardCmp
+                            side={side}
+                            cardId={c.id}
+                            onAddCard={this.props.onAddCard}
+                            selected={this.props.selectedCardId === c.id} />
                     </li>
                 );
             });
