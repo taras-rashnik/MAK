@@ -58,8 +58,10 @@ export default class TableCardCmp extends Component {
     render() {
         let cm = this.props.cardMoniker;
         
-        let x = 0;
-        let y = 0;
+        let clipX = 0;
+        let clipY = 0;
+        let left = cm.rect.x;
+        let top = cm.rect.y;
         let width = cm.rect.width;
         let height = cm.rect.height;
         const cornerRadius = 10;
@@ -71,11 +73,10 @@ export default class TableCardCmp extends Component {
             <Group
                 ref={g => this._group = g}
                 key={cm.key}
-                x={x}
-                y={y}
+                x={left}
+                y={top}
                 width={width}
                 height={height}
-
 
                 draggable={true}
 
@@ -91,15 +92,15 @@ export default class TableCardCmp extends Component {
                 <GripFrame isSelected={this.props.isSelected} cardMoniker={cm}>
                     <Group clipFunc={ctx => {
                         ctx.beginPath()
-                        ctx.moveTo(x + cornerRadius, y)
-                        ctx.lineTo(x + width - cornerRadius, y)
-                        ctx.quadraticCurveTo(x + width, y, x + width, y + cornerRadius)
-                        ctx.lineTo(x + width, y + height - cornerRadius)
-                        ctx.quadraticCurveTo(x + width, y + height, x + width - cornerRadius, y + height)
-                        ctx.lineTo(x + cornerRadius, y + height)
-                        ctx.quadraticCurveTo(x, y + height, x, y + height - cornerRadius)
-                        ctx.lineTo(x, y + cornerRadius)
-                        ctx.quadraticCurveTo(x, y, x + cornerRadius, y)
+                        ctx.moveTo(clipX + cornerRadius, clipY)
+                        ctx.lineTo(clipX + width - cornerRadius, clipY)
+                        ctx.quadraticCurveTo(clipX + width, clipY, clipX + width, clipY + cornerRadius)
+                        ctx.lineTo(clipX + width, clipY + height - cornerRadius)
+                        ctx.quadraticCurveTo(clipX + width, clipY + height, clipX + width - cornerRadius, clipY + height)
+                        ctx.lineTo(clipX + cornerRadius, clipY + height)
+                        ctx.quadraticCurveTo(clipX, clipY + height, clipX, clipY + height - cornerRadius)
+                        ctx.lineTo(clipX, clipY + cornerRadius)
+                        ctx.quadraticCurveTo(clipX, clipY, clipX + cornerRadius, clipY)
                         ctx.closePath()
                     }}>
                         <Image
